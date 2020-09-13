@@ -6,13 +6,14 @@ Steps:
     - SPI
     - Load SPI kernel module? Yes
 3. `sudo make install`
-4. Edit `/boot/config.txt
+4. Edit `/boot/config.txt`
     - Verify `dtparam=spi=on` is set
     - Add `dtoverlay=ds3234-rpi`
 4. Reboot
 5. Verify
     - `sudo vcdbg log msg`
-    - `lsmod` (look for ds3232 or ds3234)
+    - `lsmod | grep ds32`
+    - `cat /sys/bus/spi/devices/spi0.0/modalias` (`spi:ds3234`)
     - `ls /dev/rtc0`
     - `sudo hwclock`
 
