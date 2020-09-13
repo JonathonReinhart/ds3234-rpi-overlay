@@ -1,0 +1,21 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2708";
+    fragment@0 {
+        target = <&spi0>;
+        __overlay__ {
+            spidev@0 {
+                status = "disabled";
+            };
+            ds3234@0 {
+                compatible = "ds3234";
+                reg = <0>;
+                #address-cells = <1>;
+                #size-cells = <0>;
+                spi-max-frequency = <500000>;
+            };
+        };
+    };
+};
